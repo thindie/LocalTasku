@@ -15,4 +15,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "LocalTasku"
 include(":app")
+include(":core:common")
+include(":core:domain")
+include(":core:design-system")
  

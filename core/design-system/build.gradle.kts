@@ -1,25 +1,17 @@
 plugins {
-    id(Plugins.androidApplication)
+    id(Plugins.androidLibrary)
     id(Plugins.kotlinAndroid)
-    id(Plugins.kapt)
 }
 
 android {
-    namespace = Project.nameSpace
+    namespace = "com.thindie.design_system"
     compileSdk = Config.compileSdk
 
     defaultConfig {
-        applicationId = Project.appId
         minSdk = Config.minSdk
-        targetSdk =  Config.targetSdk
-        versionCode = Config.versionCode
-        versionName = Config.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
-        multiDexEnabled = true
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -29,7 +21,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            signingConfig = signingConfigs.getByName("debug")
         }
     }
     compileOptions {
@@ -48,17 +39,9 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.0"
     }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
 }
 
 dependencies {
-
-    implementation(Dependencies.ReleaseBuild.multiDex)
-
     //lifecycle
     implementation(Dependencies.Lifecycle.core)
     implementation(Dependencies.Lifecycle.lifecycleRuntime)
@@ -74,18 +57,4 @@ dependencies {
     implementation(Dependencies.Compose.material3)
     implementation(Dependencies.Compose.navigation)
     implementation(Dependencies.Compose.hiltNavigation)
-
-    // Dagger
-    implementation(Dependencies.Dagger.dagger)
-    implementation(project(mapOf("path" to ":core:common")))
-    kapt(Dependencies.Dagger.annotationProcessorCompiler)
-
-    // Testing
-    testImplementation(Dependencies.Testing.junit)
-    androidTestImplementation(Dependencies.Testing.androidJunit)
-    androidTestImplementation(Dependencies.Testing.espresso)
-    androidTestImplementation(platform(Dependencies.Compose.bom))
-    androidTestImplementation(Dependencies.Testing.composeJunit)
-    debugImplementation(Dependencies.Compose.tooling)
-    debugImplementation(Dependencies.Compose.manifest)
 }

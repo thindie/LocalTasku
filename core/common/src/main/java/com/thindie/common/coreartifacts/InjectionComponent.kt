@@ -1,0 +1,3 @@
+package com.thindie.common.coreartifacts
+
+interface InjectionComponent
