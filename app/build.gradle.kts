@@ -77,7 +77,7 @@ dependencies {
 
     // Dagger
     implementation(Dependencies.Dagger.dagger)
-    implementation(project(mapOf("path" to ":core:common")))
+
     kapt(Dependencies.Dagger.annotationProcessorCompiler)
 
     // Testing
@@ -88,4 +88,17 @@ dependencies {
     androidTestImplementation(Dependencies.Testing.composeJunit)
     debugImplementation(Dependencies.Compose.tooling)
     debugImplementation(Dependencies.Compose.manifest)
+
+    // Room
+    implementation(Dependencies.Room.roomRuntime)
+    kapt(Dependencies.Room.roomCompiler)
+    implementation(Dependencies.Room.roomPaging)
+    implementation(Dependencies.Room.roomCoroutines)
+
+
+    // Gson
+    implementation(Dependencies.Gson.gson)
+
+    implementation(project(Modules.common))
+    implementation(project(Modules.database))
 }

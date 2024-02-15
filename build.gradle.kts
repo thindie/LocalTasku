@@ -4,4 +4,4 @@
     id(Plugins.kotlinKapt) version Plugins.kaptVersion apply false
     id(Plugins.androidLibrary) version Plugins.androidLibraryVersion apply false
     id(Plugins.pureKotlin) version Plugins.pureKotlinVersion apply false
-}
+  }

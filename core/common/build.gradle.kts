@@ -54,4 +54,7 @@ dependencies {
     implementation(Dependencies.Dagger.dagger)
     kapt(Dependencies.Dagger.annotationProcessorCompiler)
 
+
+    implementation(project(Modules.database))
+
 }

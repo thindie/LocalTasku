@@ -1,4 +1,4 @@
-package com.thindie.common
+package com.thindie.database
 
 import org.junit.Test
 
