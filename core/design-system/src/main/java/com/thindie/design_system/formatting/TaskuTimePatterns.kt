@@ -1,7 +1,7 @@
 package com.thindie.design_system.formatting
 
 
-object CathedralTimePatterns {
+object TaskuTimePatterns {
 
     const val dayWeek = "E"
     const val dayNumber = "dd"
