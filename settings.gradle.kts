@@ -18,4 +18,4 @@ include(":app")
 include(":core:common")
 include(":core:domain")
 include(":core:design-system")
- 
+include(":core:database")

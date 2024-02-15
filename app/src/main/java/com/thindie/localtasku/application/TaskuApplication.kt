@@ -10,7 +10,7 @@ class TaskuApplication: Application(), App {
 
     private var appComponent: AppComponent? = null
     override fun getDependenciesProvider(): DependenciesProvider {
-       if (appComponent == null) appComponent = AppComponent.init()
+       if (appComponent == null) appComponent = AppComponent.init(this)
         return requireNotNull(appComponent)
     }
 }
