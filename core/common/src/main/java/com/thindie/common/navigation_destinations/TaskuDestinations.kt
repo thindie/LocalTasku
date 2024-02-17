@@ -7,6 +7,6 @@ object TaskuDestinations {
     const val excursions = "excursions"
     const val news = "news"
     const val main = "main"
-    const val affiche = "affiche"
+    const val tasksGeneral = "tasksGeneral"
     const val userTickets = "tickets"
 }

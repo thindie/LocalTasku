@@ -9,19 +9,19 @@ import androidx.compose.ui.unit.sp
 import com.thindie.design_system.R
 
 
-val labelFont = Font(R.font.stix)
+val labelFont = Font(R.font.nunito)
 val labelFamily = labelFont.toFontFamily()
 
-val bodyFont = Font(R.font.stix)
+val bodyFont = Font(R.font.nunito)
 val bodyFamily = bodyFont.toFontFamily()
 
-val displayFont = Font(R.font.philosopher)
+val displayFont = Font(R.font.nunito)
 val displayFamily = displayFont.toFontFamily()
 
-val titleFont = Font(R.font.philosopher)
+val titleFont = Font(R.font.nunito)
 val titleFamily = titleFont.toFontFamily()
 
-val headLineFont = Font(R.font.philosopher)
+val headLineFont = Font(R.font.nunito)
 val headLineFamily = headLineFont.toFontFamily()
 
 
