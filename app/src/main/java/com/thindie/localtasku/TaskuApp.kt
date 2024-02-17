@@ -11,12 +11,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.thindie.common.navigation_destinations.TaskuDestinations
+import com.thindie.tasks_general.tasksGeneral
 
 @Composable
-fun CathedralApp(modifier: Modifier = Modifier) {
+fun TaskuApp(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
-
-
 
     Scaffold(
         containerColor = Color.Transparent,
@@ -32,8 +31,9 @@ fun CathedralApp(modifier: Modifier = Modifier) {
                     .align(Alignment.TopCenter)
                     .padding(it),
                 navController = navController,
-                startDestination = TaskuDestinations.main
+                startDestination = TaskuDestinations.tasksGeneral
             ) {
+                tasksGeneral { }
             }
 
         }

@@ -16,8 +16,8 @@ private fun NavController.main() {
     forward(TaskuDestinations.main)
 }
 
-private fun NavController.affiche() {
-    forward(TaskuDestinations.affiche)
+private fun NavController.tasksGeneral() {
+    forward(TaskuDestinations.tasksGeneral)
 }
 
 private fun NavController.excursions() {
