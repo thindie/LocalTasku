@@ -36,57 +36,48 @@ fun TaskuItem(
             TaskuDimensions.expandedTaskuHeight
         } else {
             TaskuDimensions.basicTaskuHeight
-        },
-        animationSpec = tween(easing = FastOutSlowInEasing),
-        label = ""
+        }, animationSpec = tween(easing = FastOutSlowInEasing), label = ""
     )
+    Surface(
+        shape = MaterialTheme.shapes.extraLarge,
+        onClick = {
+            onEvent(TaskuItemEvent.OnClick(index))
+        },
+        modifier = modifier
+            .fillMaxWidth()
+            .height(itemHeight)
+    ) {
 
-
-            Surface(
-                shape = MaterialTheme.shapes.extraLarge,
-                onClick = { onEvent(TaskuItemEvent.OnClick(index)) },
-                modifier = modifier
-                    .fillMaxWidth()
-                    .height(itemHeight)
-
-            ) {
-
-                TaskuGenericIconContent(
-                    painter = item.presentPicture(),
-                    tint = MaterialTheme.colorScheme.primary,
-                    verticalAlignment = if (expandable.isExpanded()) Alignment.Top else Alignment.CenterVertically
-                ) {
-                    if (expandable.isExpanded()) {
-                        ExpandedItem(item = item, onEvent = onEvent, index = index)
-                    } else {
-                        UsualItem(item = item, onEvent = onEvent, index = index)
-                    }
-                }
+        TaskuGenericIconContent(
+            painter = item.presentPicture(),
+            tint = MaterialTheme.colorScheme.primary,
+            verticalAlignment = if (expandable.isExpanded()) Alignment.Top else Alignment.CenterVertically
+        ) {
+            if (expandable.isExpanded()) {
+                ExpandedItem(item = item, onEvent = onEvent, index = index)
+            } else {
+                UsualItem(item = item, onEvent = onEvent, index = index)
             }
         }
-
+    }
+}
 
 
 @Composable
 private fun ExpandedItem(item: Presentable, index: Int, onEvent: (TaskuItemEvent) -> Unit) {
     Column(
-        modifier = Modifier
-            .fillMaxSize()
+        modifier = Modifier.fillMaxSize()
     ) {
-        TitleSection(
-            isExpanded = true,
-            item = item,
-            onEvent = {
-                onEvent(
-                    TaskuItemEvent.OnChangeTitle(it, index)
-                )
-            })
-        DescriptionSection(item = item,
-            onEvent = {
-                onEvent(
-                    TaskuItemEvent.OnChangeDescription(it, index)
-                )
-            })
+        TitleSection(isExpanded = true, item = item, onEvent = {
+            onEvent(
+                TaskuItemEvent.OnChangeTitle(it, index)
+            )
+        })
+        DescriptionSection(item = item, onEvent = {
+            onEvent(
+                TaskuItemEvent.OnChangeDescription(it, index)
+            )
+        })
         CustomizingSection(isExpanded = true, item = item, onEvent) // todo(
     }
 }
@@ -98,10 +89,7 @@ private fun UsualItem(item: Presentable, index: Int, onEvent: (TaskuItemEvent) -
             .fillMaxWidth()
             .wrapContentHeight()
     ) {
-        TitleSection(
-            isExpanded = false,
-            item = item,
-            onEvent = { /*ignore*/ })
+        TitleSection(isExpanded = false, item = item, onEvent = { /*ignore*/ })
         CustomizingSection(isExpanded = false, item = item, onEvent)
     }
 }

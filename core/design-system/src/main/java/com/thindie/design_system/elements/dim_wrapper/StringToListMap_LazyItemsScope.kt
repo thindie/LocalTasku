@@ -7,11 +7,31 @@ import androidx.compose.runtime.Composable
 
 @OptIn(ExperimentalFoundationApi::class)
 inline fun <T, R> LazyListScope.itemsMap(
-    map : Map<T, R>,
+    map: Map<T, R>,
     noinline key: ((item: R) -> Any)? = null,
     noinline contentType: (item: R) -> Any? = { null },
     crossinline headerContent: @Composable LazyItemScope.(item: T) -> Unit,
     crossinline itemsContent: @Composable LazyItemScope.(item: R) -> Unit,
+) {
+    map.forEach {
+        stickyHeader { headerContent(it.key) }
+
+        item(
+             key = if (key != null) { index: Int -> index  } else null,
+            contentType = { index: Int -> contentType(it.value) }
+        ) {
+            itemsContent(it.value)
+        }
+    }
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+inline fun <T, R> LazyListScope.itemsMapIndexed(
+    map: Map<T, R>,
+    noinline key: ((item: R) -> Any)? = null,
+    noinline contentType: (item: R) -> Any? = { null },
+    crossinline headerContent: @Composable LazyItemScope.(item: T) -> Unit,
+    crossinline itemsContent: @Composable LazyItemScope.(index: Int, item: R) -> Unit,
 ) {
     map.forEach {
         stickyHeader { headerContent(it.key) }
@@ -20,8 +40,11 @@ inline fun <T, R> LazyListScope.itemsMap(
             count = map.values.size,
             key = if (key != null) { index: Int -> key(list[index]) } else null,
             contentType = { index: Int -> contentType(list[index]) }
-        ) {index ->
-            itemsContent(list[index])
+        ) {
+            list.forEachIndexed { i, r ->
+                itemsContent(i,r)
+            }
+
         }
     }
 }
