@@ -1,4 +1,4 @@
-package com.thindie.tasks_general.presentation.viewmodelstate
+package com.thindie.tasks_general.presentation.unsorted_tasks.viewmodelstate
 
 import com.thindie.design_system.elements.tasku_item_utils.TaskuItemEvent
 import com.thindie.tasks_general.di.TasksGeneralScope

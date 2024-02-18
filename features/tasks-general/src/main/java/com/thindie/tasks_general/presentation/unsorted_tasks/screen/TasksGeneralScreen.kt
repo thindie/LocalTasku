@@ -1,4 +1,4 @@
-package com.thindie.tasks_general.presentation.screen
+package com.thindie.tasks_general.presentation.unsorted_tasks.screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -16,9 +16,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.thindie.common.timemanagement.TimeOperator
 import com.thindie.design_system.elements.TaskuItem
-import com.thindie.tasks_general.presentation.screen.sort_group_row.SortAndGroupSection
-import com.thindie.tasks_general.presentation.viewmodel.TasksGeneralScreenViewModel
-import com.thindie.tasks_general.presentation.viewmodelevent.TasksGeneralViewModelEvent
+import com.thindie.tasks_general.presentation.unsorted_tasks.viewmodel.TasksGeneralScreenViewModel
+import com.thindie.tasks_general.presentation.unsorted_tasks.viewmodelevent.TasksGeneralViewModelEvent
 
 
 @Composable
@@ -38,7 +37,7 @@ internal fun TasksGeneralScreen(
             .verticalScroll(rememberScrollState())
     ) {
 
-        SortAndGroupSection(areaGroups = listOf(), priorityGrade = listOf(), onEvent = {})
+
 
         Spacer(modifier = Modifier.height(30.dp))
 

@@ -1,11 +1,11 @@
-package com.thindie.tasks_general.presentation.viewmodelstate
+package com.thindie.tasks_general.presentation.unsorted_tasks.viewmodelstate
 
 import com.thindie.common.coreartifacts.ViewState
 import com.thindie.tasks_general.presentation.PresentableTask
 
 internal data class TasksGeneralViewModelState(
-    val presentableTasks: List<PresentableTask>,
-    val expandedIndex: Int,
+     val presentableTasks: List<PresentableTask>,
+     val expandedIndex: Int,
     override val isLoading: Boolean,
     override val isError: Boolean,
 ) : ViewState {

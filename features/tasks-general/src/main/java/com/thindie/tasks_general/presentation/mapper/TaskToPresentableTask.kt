@@ -1,4 +1,4 @@
-package com.thindie.tasks_general.presentation.mapper
+package com.thindie.tasks_general.presentation.unsorted_tasks.mapper
 
 import com.thindie.design_system.TaskStatusType
 import com.thindie.tasks_general.domain.Task
@@ -10,6 +10,6 @@ internal fun Task.asPresentableTask() = PresentableTask(
     taskDescription = getDescription(),
     taskDeadline = getPlannedTimeStampMillis(),
     taskGroupTitle = getGrouping(),
-    taskStatusType = TaskStatusType.Factory.getInstance(getAssign()),
+    taskStatusType = TaskStatusType.getInstance(getAssign()),
     isTaskExpanded = false
 )

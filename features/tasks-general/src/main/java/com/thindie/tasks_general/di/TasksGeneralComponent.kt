@@ -17,8 +17,7 @@ interface TasksGeneralComponent {
     companion object {
         fun init(dependenciesProvider: DependenciesProvider): TasksGeneralComponent {
 
-            return DaggerTasksGeneralComponent
-                .factory()
+            return DaggerTasksGeneralComponent.factory()
                 .create(dependenciesProvider)
         }
     }
