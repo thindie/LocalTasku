@@ -12,32 +12,14 @@ private fun NavController.forward(destination: String) {
     }
 }
 
-private fun NavController.main() {
-    forward(TaskuDestinations.main)
+
+fun NavController.unsortedTasks() {
+    forward(TaskuDestinations.unsortedTasks)
 }
 
-private fun NavController.tasksGeneral() {
-    forward(TaskuDestinations.tasksGeneral)
+fun NavController.areaSortedTasks() {
+    forward(TaskuDestinations.sortedTasksArea)
 }
 
-private fun NavController.excursions() {
-    forward(TaskuDestinations.excursions)
-}
-
-fun NavController.eventCalendar() {
-    forward(TaskuDestinations.eventCalendar)
-}
-
-fun NavController.contacts() {
-    forward(TaskuDestinations.contacts)
-}
-
-fun NavController.priceInfo() {
-    forward(TaskuDestinations.priceInfo)
-}
-
-fun NavController.userTickets(){
-    forward(TaskuDestinations.userTickets)
-}
 
 
