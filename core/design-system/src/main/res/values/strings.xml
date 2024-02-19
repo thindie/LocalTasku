@@ -1,37 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="currency_ruble">₽</string>
-    <string name="button_title_more">"Подробнее.."</string>
-    <string name="button_okay">"OK"</string>
-    <string name="button_title_calendar">"Календарь событий"</string>
-    <string name="button_title_guest_ticket">"Пригласительный"</string>
-    <string name="headline_news">Новости</string>
-    <string name="headline_excursions">Экскурсии</string>
-    <string name="headline_benefitable_dialog">Льготникам</string>
-    <string name="headline_concerts">Концерты</string>
-    <string name="headline_contacts">Контакты</string>
-    <string name="headline_current_events">"События на сегодня"</string>
-    <string name="headline_price_information_details">"Цены и льготы"</string>
-    <string name="label_lections">Лекция</string>
-    <string name="drawer_contacts">Контакты</string>
-    <string name="drawer_user_available_tickets">Мои Билеты</string>
-    <string name="drawer_price_information">"Цены на билеты"</string>
-    <string name="contact_headline_office">Офис</string>
-    <string name="contact_headline_pastor">Кафедральный Собор</string>
-    <string name="contact_headline_sobor">Дом Пастора</string>
-    <string name="headline_affiche">Афиша</string>
-    <string name="label_daily">Дневные</string>
-    <string name="label_nightly">Ночные</string>
-    <string name="kant_kind_face">"Веселое выражение лица постепенно отражается и на внутреннем мире."</string>
-    <string name="label_benefitable_person">"Кто имеет право на льготы"</string>
-    <string name="title_all_possible">"Все возможные"</string>
-    <string name="ticket_benefit_information">
-        "При приобретении льготного билета на входе необходимо предъявить соответствующий документ. \n Право на бесплатное посещение музея без экскурсии имеют:
-   \n• Герои Советского Союза, герои Российской Федерации и полные кавалеры ордена Славы (предоставляется внеочередное право на приобретение входных билетов)
-  \n• Ветераны Великой Отечественной войны и приравненные к ним категории граждан, участники боевых действий
-  \n• Инвалиды I и II групп, инвалиды детства и их сопровождающий
-   \n• Дети-сироты и дети, оставшиеся без попечения родителей, находящиеся в детских домах, школах-интернатах
-  \n• Дети до 6 лет включительно"
-    </string>
+    <string name="app_name">Tasku</string>
+    <string name="text_title">Title</string>
+    <string name="text_description">Description</string>
 
+    <string name="text_title_placeholder">Task…</string>
+    <string name="text_description_placeholder">Description…</string>
+
+    <string name="text_status">Status</string>
+    <string name="hint_textfield_email">Email…</string>
+    <string name="hint_textfield_password">Password…</string>
+    <string name="hint_textfield_repeat_password">Repeat password…</string>
+
+    <string name="button_label_continue_google">"Continue with Google"</string>
+    <string name="button_label_sign_up">"Sing up"</string>
+    <string name="button_label_sing_in">"Sign In"</string>
+
+    <string name="decorate_text_already_have_account">"Already have an account?"</string>
+    <string name="decorate_text_havent_account">"Don’t have an account?"</string>
+
+    <string name="clickable_text_register">Register</string>
+    <string name="clickable_text_login">Login</string>
+
+    <string name="text_triple_dots">...</string>
+    <string name="text_priority">Priority</string>
+    <string name="text_high_priority">High Priority</string>
+    <string name="text_area">Area</string>
+    <string name="text_reminder">Reminder</string>
+    <string name="text_repeat">Repeat</string>
+    <string name="text_sort">Sort</string>
+    <string name="text_group">Group</string>
+    <string name="text_yesterday">Yesterday</string>
+    <string name="text_today">Today</string>
+    <string name="text_tomorrow">Tomorrow</string>
+    <string name="text_unspecified"> </string>
+    <string name="grouping_title_none">Group</string>
+    <string name="sort_group_title_date">Date</string>
+    <string name="sort_group_title_priority">Priority</string>
+    <string name="sort_group_title_area">Area</string>
+    <string name="sorting_title_none">Sort</string>
+    <string name="calendar_title_when">When?</string>
+    <string name="calendar_text_when">Tomorrow</string>
+    <string name="calendar_text_repeat">Repeat...</string>
+    <string name="calendar_button_text_submit">Submit</string>
+    <string name="calendar_button_text_cancel">Cancel</string>
+    <string name="calendar_text_repeat_finish">"After finish"</string>
+    <string name="calendar_text_regular">"Regularly"</string>
+    <string name="calendar_text_long1">"Create a copy of the task at the selected interval after the completion of the original"</string>
+    <string name="calendar_text_long2">"Create a copy of the task at the selected interval"</string>
+    <string name="calendar_text_every">Every</string>
+    <string name="calendar_text_start">Start</string>
+    <string name="calendar_text_ends">Ends</string>
+    <string name="calendar_text_day">day</string>
+    <string name="calendar_text_on">On</string>
+    <string name="calendar_text_week">week</string>
+    <string name="calendar_text_month">month</string>
+    <string name="calendar_text_year">year</string>
+    <string name="calendar_text_add_time">"Add time"</string>
+    <string name="sorting_title_create_time">Create time</string>
+
+    <string name="expanded_task_bottom_menu_complete_title">Complete</string>
+    <string name="expanded_task_bottom_menu_duplicate_title">Duplicate</string>
+    <string name="expanded_task_bottom_menu_share_title">Share</string>
+    <string name="expanded_task_bottom_menu_delete_title">Delete</string>
 </resources>

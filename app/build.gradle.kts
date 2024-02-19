@@ -101,4 +101,6 @@ dependencies {
 
     implementation(project(Modules.common))
     implementation(project(Modules.database))
+    implementation(project(Modules.designSystem))
+    implementation(project(Modules.tasksGeneral))
 }

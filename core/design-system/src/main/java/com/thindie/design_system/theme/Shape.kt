@@ -16,4 +16,4 @@ val shapes: Shapes = Shapes(
     extraLarge = RoundedCornerShape(32.dp)
 )
 
-val LocalShape = compositionLocalOf { shapes }
+
