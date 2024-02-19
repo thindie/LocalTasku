@@ -24,27 +24,3 @@ inline fun <T, R> LazyListScope.itemsMap(
         }
     }
 }
-
-@OptIn(ExperimentalFoundationApi::class)
-inline fun <T, R> LazyListScope.itemsMapIndexed(
-    map: Map<T, R>,
-    noinline key: ((item: R) -> Any)? = null,
-    noinline contentType: (item: R) -> Any? = { null },
-    crossinline headerContent: @Composable LazyItemScope.(item: T) -> Unit,
-    crossinline itemsContent: @Composable LazyItemScope.(index: Int, item: R) -> Unit,
-) {
-    map.forEach {
-        stickyHeader { headerContent(it.key) }
-        val list: List<R> = map.values.toList()
-        items(
-            count = map.values.size,
-            key = if (key != null) { index: Int -> key(list[index]) } else null,
-            contentType = { index: Int -> contentType(list[index]) }
-        ) {
-            list.forEachIndexed { i, r ->
-                itemsContent(i,r)
-            }
-
-        }
-    }
-}
