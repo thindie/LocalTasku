@@ -1,6 +1,5 @@
 package com.thindie.tasks_general.presentation.sorted_tasks_area.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.thindie.common.coreartifacts.ViewStateHolder
@@ -15,7 +14,7 @@ import com.thindie.tasks_general.domain.Task
 import com.thindie.tasks_general.presentation.PresentableTask
 import com.thindie.tasks_general.presentation.sorted_tasks_area.viewmodelevent.TasksAreaSortedScreenViewModelEvent
 import com.thindie.tasks_general.presentation.sorted_tasks_area.viewmodelstate.TasksAreaSortedScreenViewModelState
-import com.thindie.tasks_general.presentation.unsorted_tasks.mapper.asPresentableTask
+import com.thindie.tasks_general.presentation.mapper.asPresentableTask
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

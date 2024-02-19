@@ -30,7 +30,7 @@ internal class TasksGeneralRepositoryImpl @Inject constructor(private val timeOp
                         taskDescription = "d4",
                         taskDeadline = 0,
                         taskGroupTitle = "123",
-                        taskStatusAssign = 3
+                        taskStatusAssign = 0
                     )
                 )
 
@@ -41,7 +41,7 @@ internal class TasksGeneralRepositoryImpl @Inject constructor(private val timeOp
                         taskDescription = "d34",
                         taskDeadline = 0,
                         taskGroupTitle = "123",
-                        taskStatusAssign = 3
+                        taskStatusAssign = 2
                     )
                 )
 
@@ -74,7 +74,7 @@ internal class TasksGeneralRepositoryImpl @Inject constructor(private val timeOp
                         taskDescription = "d34",
                         taskDeadline = 0,
                         taskGroupTitle = "456",
-                        taskStatusAssign = 3
+                        taskStatusAssign = 245
                     )
                 )
             }

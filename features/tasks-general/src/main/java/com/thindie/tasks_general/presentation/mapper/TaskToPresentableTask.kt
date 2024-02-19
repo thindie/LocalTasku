@@ -1,4 +1,4 @@
-package com.thindie.tasks_general.presentation.unsorted_tasks.mapper
+package com.thindie.tasks_general.presentation.mapper
 
 import com.thindie.design_system.TaskStatusType
 import com.thindie.tasks_general.domain.Task
