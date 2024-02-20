@@ -11,6 +11,10 @@ internal fun NavController.areaSortedTasks() {
     forward(FeatureDestination.routeAreaSortedTasks)
 }
 
+internal fun NavController.prioritySortedTasks() {
+    forward(FeatureDestination.routePrioritySortedTasks)
+}
+
 private fun NavController.forward(destination: String) {
     navigate(destination) {
         launchSingleTop = true

@@ -1,4 +1,4 @@
-package com.thindie.tasks_general.presentation.sorted_tasks_area.viewmodel
+package com.thindie.tasks_general.presentation.sorted_tasks_priority.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,13 +8,14 @@ import com.thindie.common.coreartifacts.loading
 import com.thindie.common.coreartifacts.requestResultAndParse
 import com.thindie.common.coreartifacts.subscribeControlledStateFlow
 import com.thindie.common.coreartifacts.success
+import com.thindie.design_system.TaskPriorityType
 import com.thindie.tasks_general.di.TasksGeneralScope
 import com.thindie.tasks_general.domain.GetTasksUseCase
 import com.thindie.tasks_general.domain.Task
 import com.thindie.tasks_general.presentation.PresentableTask
 import com.thindie.tasks_general.presentation.mapper.asPresentableTask
-import com.thindie.tasks_general.presentation.sorted_tasks_area.viewmodelevent.TasksAreaSortedScreenViewModelEvent
-import com.thindie.tasks_general.presentation.sorted_tasks_area.viewmodelstate.TasksAreaSortedScreenViewModelState
+import com.thindie.tasks_general.presentation.sorted_tasks_priority.viewmodelevent.TasksPrioritySortedScreenViewModelEvent
+import com.thindie.tasks_general.presentation.sorted_tasks_priority.viewmodelstate.TasksPrioritySortedScreenViewModelState
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -22,17 +23,18 @@ import kotlinx.coroutines.flow.getAndUpdate
 import kotlinx.coroutines.flow.update
 
 @TasksGeneralScope
-internal class TasksAreaSortedScreenViewModel @Inject constructor(
+internal class TasksPrioritySortedScreenViewModel @Inject constructor(
     private val getTasksUseCase: GetTasksUseCase,
-) : ViewModel(), ViewStateHolder<TasksAreaSortedScreenViewModelState> {
+) : ViewModel(), ViewStateHolder<TasksPrioritySortedScreenViewModelState> {
 
 
-    private val _state = MutableStateFlow(TasksAreaSortedScreenViewModelState.getDefault())
+    private val _state = MutableStateFlow(TasksPrioritySortedScreenViewModelState.getDefault())
 
-    override val state: StateFlow<TasksAreaSortedScreenViewModelState> = _state
+    override val state: StateFlow<TasksPrioritySortedScreenViewModelState> = _state
         .subscribeControlledStateFlow(viewModelScope)
 
     fun onLaunchScreen() {
+
         getContacts()
     }
 
@@ -51,15 +53,15 @@ internal class TasksAreaSortedScreenViewModel @Inject constructor(
                 _state.success()
                 stateToUpdate.copy(
                     presentableTasks = it.map(Task::asPresentableTask)
-                        .groupBy(PresentableTask::taskGroupTitle)
+                        .groupBy(PresentableTask::byTaskPriority)
                 )
             }
         })
     }
 
-    fun onEvent(event: TasksAreaSortedScreenViewModelEvent) {
+    fun onEvent(event: TasksPrioritySortedScreenViewModelEvent) {
         when (event) {
-            is TasksAreaSortedScreenViewModelEvent.OnTaskUpdate -> {
+            is TasksPrioritySortedScreenViewModelEvent.OnTaskUpdate -> {
                 _state.getAndUpdate { tasksGeneralViewModelState ->
                     tasksGeneralViewModelState // todo(
                 }
@@ -67,4 +69,8 @@ internal class TasksAreaSortedScreenViewModel @Inject constructor(
         }
     }
 
+}
+
+private fun PresentableTask.byTaskPriority(): TaskPriorityType {
+    return taskPriorityType
 }

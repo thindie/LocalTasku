@@ -14,7 +14,7 @@ import com.thindie.tasks_general.domain.Task
 import com.thindie.tasks_general.presentation.mapper.asPresentableTask
 import com.thindie.tasks_general.presentation.unsorted_tasks.viewmodelevent.TasksGeneralViewModelEvent
 import com.thindie.tasks_general.presentation.unsorted_tasks.viewmodelstate.TasksGeneralViewModelState
-import com.thindie.tasks_general.presentation.sorted_tasks_area.viewmodelstate.ViewModelStateTaskuListUpdateAssistant
+import com.thindie.tasks_general.presentation.unsorted_tasks.viewmodelstate.ViewModelStateTaskuListUpdateAssistant
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

@@ -1,10 +1,11 @@
-package com.thindie.tasks_general.presentation.sorted_tasks_area.viewmodelstate
+package com.thindie.tasks_general.presentation.sorted_tasks_priority.viewmodelstate
 
 import com.thindie.common.coreartifacts.ViewState
+import com.thindie.design_system.TaskPriorityType
 import com.thindie.tasks_general.presentation.PresentableTask
 
-internal data class TasksAreaSortedScreenViewModelState(
-    val presentableTasks: Map<String, List<PresentableTask>>,
+internal data class TasksPrioritySortedScreenViewModelState(
+    val presentableTasks: Map<TaskPriorityType, List<PresentableTask>>,
     val expandedIndex: Int,
     override val isLoading: Boolean,
     override val isError: Boolean,
@@ -24,7 +25,7 @@ internal data class TasksAreaSortedScreenViewModelState(
     }
 
     companion object {
-        fun getDefault() = TasksAreaSortedScreenViewModelState(
+        fun getDefault() = TasksPrioritySortedScreenViewModelState(
             isLoading = true,
             isError = false,
             expandedIndex = -1,
