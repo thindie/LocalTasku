@@ -63,4 +63,9 @@
     <string name="expanded_task_bottom_menu_duplicate_title">Duplicate</string>
     <string name="expanded_task_bottom_menu_share_title">Share</string>
     <string name="expanded_task_bottom_menu_delete_title">Delete</string>
+
+    <string name="priority_low">Low</string>
+    <string name="priority_medium">Medium</string>
+    <string name="priority_high">High</string>
+    <string name="priority_highest">Highest</string>
 </resources>

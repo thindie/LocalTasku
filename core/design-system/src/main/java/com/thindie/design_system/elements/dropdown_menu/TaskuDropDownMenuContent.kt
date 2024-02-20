@@ -49,8 +49,8 @@ fun TaskuDropdownMenuContent(
             } else {
                 // Expanded to dismissed.
                 tween(
-                    durationMillis = 1,
-                    delayMillis = 490 - 1
+                    durationMillis = 10,
+                    delayMillis = 490 - 10
                 )
             }
         }, label = ""

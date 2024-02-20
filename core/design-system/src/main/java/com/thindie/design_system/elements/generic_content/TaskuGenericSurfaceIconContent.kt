@@ -18,7 +18,7 @@ fun TaskuGenericSurfaceIconContent(
     modifier: Modifier = Modifier,
     iconModifier: Modifier = Modifier,
     painter: Painter,
-    iconTint: Color,
+    iconTint: Color? = null,
     surfaceColor: Color,
     onSurfaceClick: () -> Unit = {},
     surfaceShape: Shape = MaterialTheme.shapes.extraLarge,

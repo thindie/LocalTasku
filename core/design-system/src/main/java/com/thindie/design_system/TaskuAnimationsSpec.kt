@@ -1,23 +1,21 @@
 package com.thindie.design_system
 
-import androidx.compose.animation.core.EaseInBack
-import androidx.compose.animation.core.EaseOutBack
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleOut
+import androidx.compose.animation.slideInVertically
 
 object TaskuAnimationsSpec {
     object NavTransitions {
-        val fadeIn = fadeIn(
+        val fadeIn = slideInVertically(
             animationSpec = tween(
-                easing = EaseInBack, durationMillis = 700
-            )
-        )
+                durationMillis = 800
+            ),
+        ).plus(fadeIn())
 
-        val fadeOut = fadeOut(
-            animationSpec = tween(
-                easing = EaseOutBack, durationMillis = 1000
-            )
-        )
+        val fadeOut = scaleOut(
+            animationSpec = tween(durationMillis = 800)
+        ).plus(fadeOut())
     }
 }

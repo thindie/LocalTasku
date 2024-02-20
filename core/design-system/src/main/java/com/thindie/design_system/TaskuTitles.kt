@@ -18,4 +18,12 @@ object TaskuTitles {
     object Calendar {
         val today = R.string.text_today
     }
+
+    object Priority {
+        val low = R.string.priority_low
+        val medium = R.string.priority_medium
+        val high = R.string.priority_high
+        val highest = R.string.priority_highest
+
+    }
 }
