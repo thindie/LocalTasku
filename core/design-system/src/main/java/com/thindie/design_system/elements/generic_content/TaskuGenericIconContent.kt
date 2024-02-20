@@ -24,14 +24,14 @@ fun TaskuGenericIconContent(
     tint: Color,
     verticalAlignment: Alignment.Vertical = Alignment.Top,
     horizontalArrangement : Arrangement.Horizontal =  Arrangement.Start,
-    iconSize: Dp = TaskuDimensions.iconSizeRegular,
-    spacerWidth: Dp = TaskuDimensions.spaceNear,
+    iconSize: Dp = TaskuDimensions.TaskuIcons.regular,
+    spacerWidth: Dp = TaskuDimensions.Spacing.usual,
     content: @Composable () -> Unit,
 ) {
 
     Row(
         modifier = modifier.padding(
-            TaskuDimensions.commonPadding
+            TaskuDimensions.Padding.commonValues
         ),
         verticalAlignment = verticalAlignment,
         horizontalArrangement = horizontalArrangement

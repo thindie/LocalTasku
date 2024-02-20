@@ -14,4 +14,8 @@ object TaskuTitles {
         val area = R.string.sort_group_title_area
         val priority = R.string.sort_group_title_priority
     }
+
+    object Calendar {
+        val today = R.string.text_today
+    }
 }

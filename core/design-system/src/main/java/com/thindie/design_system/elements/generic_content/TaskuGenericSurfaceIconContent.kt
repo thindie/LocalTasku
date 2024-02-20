@@ -38,7 +38,7 @@ fun TaskuGenericSurfaceIconContent(
             painter = painter,
             tint = iconTint,
             spacerWidth = spacerWidth,
-            modifier = Modifier.fillMaxWidth(),
+            modifier = modifier,
             verticalAlignment = Alignment.CenterVertically,
             iconSize = iconSize,
         ) {

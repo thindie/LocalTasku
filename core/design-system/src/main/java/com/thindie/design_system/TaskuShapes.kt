@@ -30,16 +30,16 @@ object TaskuShapes {
     object DropDownMenuShapes {
         //for width 148.dp
         val underLyingElement = RoundedCornerShape(
-            topStart = 12.dp,
-            topEnd = 12.dp,
+            topStart = 20.dp,
+            topEnd = 20.dp,
             bottomStart = 0.dp,
             bottomEnd = 0.dp
         )
         val expandedDropDownMenu = RoundedCornerShape(
             topStart = 0.dp,
             topEnd = 0.dp,
-            bottomStart = 12.dp,
-            bottomEnd = 12.dp
+            bottomStart = 20.dp,
+            bottomEnd = 20.dp
         )
     }
 

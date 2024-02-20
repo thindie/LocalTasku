@@ -4,9 +4,13 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.ui.unit.dp
 
 object TaskuDimensions {
+    object TopBar {
+        val height = 36.dp
+    }
+
     object DropDownMenu {
         val width = 148.dp
-        val height = 24.dp
+        val height = 36.dp
     }
 
     object TaskuCard {
