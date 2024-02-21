@@ -9,4 +9,6 @@ sealed interface TasksGeneralViewModelEvent {
     data object OnSortAlphabet: TasksGeneralViewModelEvent
 
     data object OnStartDefault: TasksGeneralViewModelEvent
+
+    data object OnCreateTask: TasksGeneralViewModelEvent
 }

@@ -30,4 +30,10 @@ data class Task(
     override fun getId() = taskId
     override fun getAssign() = taskStatusAssign
     override fun getPrior() = taskPriority
+
+    companion object {
+        interface CreateAble : Nameable, Descriptionable
+
+    }
+
 }

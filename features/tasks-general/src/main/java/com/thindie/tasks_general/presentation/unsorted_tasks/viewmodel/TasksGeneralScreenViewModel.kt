@@ -8,8 +8,10 @@ import com.thindie.common.coreartifacts.loading
 import com.thindie.common.coreartifacts.requestResultAndParse
 import com.thindie.common.coreartifacts.subscribeControlledStateFlow
 import com.thindie.common.coreartifacts.success
+import com.thindie.design_system.elements.tasku_item_utils.TaskuItemEvent
 import com.thindie.tasks_general.di.TasksGeneralScope
 import com.thindie.tasks_general.domain.GetTasksUseCase
+import com.thindie.tasks_general.domain.SetCreateAbleUseCase
 import com.thindie.tasks_general.domain.Task
 import com.thindie.tasks_general.presentation.mapper.asPresentableTask
 import com.thindie.tasks_general.presentation.unsorted_tasks.viewmodelevent.TasksGeneralViewModelEvent
@@ -25,6 +27,7 @@ import kotlinx.coroutines.flow.update
 internal class TasksGeneralScreenViewModel @Inject constructor(
     private val getTasksUseCase: GetTasksUseCase,
     private val taskuEventReceiver: ViewModelStateTaskuListUpdateAssistant,
+    private val setCreateAbleUseCase: SetCreateAbleUseCase,
 ) : ViewModel(), ViewStateHolder<TasksGeneralViewModelState> {
 
 
@@ -63,7 +66,7 @@ internal class TasksGeneralScreenViewModel @Inject constructor(
             }
 
             TasksGeneralViewModelEvent.OnSortAlphabet -> {
-                onEvent(TasksGeneralViewModelEvent.OnStartDefault)
+                getDefaultPresentableTasksState()
                 _state.getAndUpdate { tasksGeneralViewModelState ->
                     val list =
                         tasksGeneralViewModelState.presentableTasks.sortedBy { it.taskTitle } //todo
@@ -72,7 +75,7 @@ internal class TasksGeneralScreenViewModel @Inject constructor(
             }
 
             TasksGeneralViewModelEvent.OnSortDate -> {
-                onEvent(TasksGeneralViewModelEvent.OnStartDefault)
+                getDefaultPresentableTasksState()
                 _state.getAndUpdate { tasksGeneralViewModelState ->
                     val list =
                         tasksGeneralViewModelState.presentableTasks.sortedBy { it.taskDeadline } //todo
@@ -83,7 +86,34 @@ internal class TasksGeneralScreenViewModel @Inject constructor(
             TasksGeneralViewModelEvent.OnStartDefault -> {
                 getContacts()
             }
+
+            TasksGeneralViewModelEvent.OnCreateTask -> {
+                taskuEventReceiver.onTaskuEvent(
+                    TaskuItemEvent.OnCollapseAll,
+                    _state.value
+                )
+                requestResultAndParse(setCreateAbleUseCase::set) {
+                    getDefaultPresentableTasksState()
+                }
+                expandLastPresentableTaskInList()
+            }
         }
+    }
+
+    private fun tasksListSize(): Int {
+        return _state.value.presentableTasks.size - 1
+    }
+
+    private fun expandLastPresentableTaskInList() {
+        onEvent(
+            TasksGeneralViewModelEvent.OnTaskUpdate(
+                TaskuItemEvent.OnClick(tasksListSize())
+            )
+        )
+    }
+
+    private fun getDefaultPresentableTasksState() {
+        onEvent(TasksGeneralViewModelEvent.OnStartDefault)
     }
 
 }
