@@ -38,9 +38,12 @@ fun TaskuTopAppBar(labelText: String, onClickBack: () -> Unit, onOptionsEvent: (
         }
 
         TaskuGenericSurfaceIconContent(
-            modifier = Modifier.wrapContentWidth(),
+            modifier = Modifier
+                .padding(TaskuDimensions.Padding.horizontal)
+                .wrapContentWidth(),
             painter = TaskuIcons.flame.painter(),
             iconTint = TaskuColors.orange,
+            horizontalArrangement = Arrangement.Center,
             surfaceColor = MaterialTheme.colorScheme.surface,
             spacerWidth = TaskuDimensions.Spacing.usual
         ) {

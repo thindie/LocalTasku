@@ -1,8 +1,10 @@
 package com.thindie.design_system.elements.generic_content
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
@@ -17,11 +19,15 @@ fun TaskuGenericIconText(
     painter: Painter,
     tint: Color,
     style: TextStyle? = null,
-    spacerWidth: Dp = TaskuDimensions.spaceNear,
-    iconSize: Dp = TaskuDimensions.iconSizeRegular,
+    spacerWidth: Dp = TaskuDimensions.Spacing.near,
+    iconSize: Dp = TaskuDimensions.TaskuIcons.regular,
+    arrangement: Arrangement.Horizontal = Arrangement.Start,
+    alignment: Alignment.Vertical = Alignment.CenterVertically,
     title: String,
 ) {
     TaskuGenericIconContent(
+        verticalAlignment = alignment,
+        horizontalArrangement = arrangement,
         painter = painter,
         tint = tint,
         modifier = modifier,

@@ -136,7 +136,7 @@ private fun GroupSection(
                     modifier = Modifier
                         .align(CenterHorizontally)
                         .height(TaskuDimensions.DropDownMenu.height),
-                    style = LocalTextStyle.current.copy(
+                    style = MaterialTheme.typography.titleMedium.copy(
                         color = applyable.getRootElementColor(), fontWeight = FontWeight.Bold
                     )
                 ) {
@@ -171,7 +171,7 @@ private fun GroupSection(
                 debounceBarrier = true
             },
             color = applyable.getDropdownBackgroundColor(),
-            contentVerticalPadding = TaskuDimensions.Padding.horizontal,
+            contentVerticalPadding = TaskuDimensions.Padding.vertical,
             shape = TaskuShapes.DropDownMenuShapes.expandedDropDownMenu
         ) {
             options.forEachIndexed() { i, item ->

@@ -11,12 +11,13 @@ sealed interface TaskPriorityType {
     fun getStatusImage(): Painter
 
     fun getColor(): Color
+
     @StringRes
     fun getTitle(): Int
 
     data object Low : TaskPriorityType {
         @Composable
-        override fun getStatusImage() = TaskuIcons.taskActive.painter()
+        override fun getStatusImage() = TaskuIcons.Priority.prirotyLow.painter()
 
         override fun getColor() = Color.LightGray
         override fun getTitle() = TaskuTitles.Priority.low
@@ -24,7 +25,7 @@ sealed interface TaskPriorityType {
 
     data object Medium : TaskPriorityType {
         @Composable
-        override fun getStatusImage() = TaskuIcons.taskCancel.painter()
+        override fun getStatusImage() = TaskuIcons.Priority.prirotyLow.painter()
         override fun getColor() = TaskuColors.green
 
         override fun getTitle() = TaskuTitles.Priority.medium
@@ -32,7 +33,7 @@ sealed interface TaskPriorityType {
 
     data object High : TaskPriorityType {
         @Composable
-        override fun getStatusImage() = TaskuIcons.taskDone.painter()
+        override fun getStatusImage() = TaskuIcons.Priority.priorityHigh.painter()
         override fun getColor() = TaskuColors.azure
 
         override fun getTitle() = TaskuTitles.Priority.high
@@ -41,7 +42,7 @@ sealed interface TaskPriorityType {
 
     data object Highest : TaskPriorityType {
         @Composable
-        override fun getStatusImage() = TaskuIcons.taskRepeat.painter()
+        override fun getStatusImage() = TaskuIcons.Priority.priorityHigh.painter()
         override fun getColor() = TaskuColors.red
         override fun getTitle() = TaskuTitles.Priority.highest
     }

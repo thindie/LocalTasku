@@ -1,4 +1,4 @@
-package com.thindie.design_system.elements.dim_wrapper
+package com.thindie.design_system
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.lazy.LazyItemScope

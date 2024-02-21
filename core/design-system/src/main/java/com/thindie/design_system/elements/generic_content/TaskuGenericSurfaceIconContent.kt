@@ -1,5 +1,6 @@
 package com.thindie.design_system.elements.generic_content
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -22,8 +23,9 @@ fun TaskuGenericSurfaceIconContent(
     surfaceColor: Color,
     onSurfaceClick: () -> Unit = {},
     surfaceShape: Shape = MaterialTheme.shapes.extraLarge,
-    iconSize: Dp = TaskuDimensions.iconSizeRegular,
-    spacerWidth: Dp = TaskuDimensions.spaceNear,
+    iconSize: Dp = TaskuDimensions.TaskuIcons.regular,
+    spacerWidth: Dp = TaskuDimensions.Spacing.near,
+    horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
     content: @Composable () -> Unit,
 ) {
     Surface(
@@ -40,6 +42,7 @@ fun TaskuGenericSurfaceIconContent(
             spacerWidth = spacerWidth,
             modifier = modifier,
             verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = horizontalArrangement,
             iconSize = iconSize,
         ) {
             content()

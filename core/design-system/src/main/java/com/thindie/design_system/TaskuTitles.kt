@@ -7,7 +7,7 @@ object TaskuTitles {
 
     object Sort {
         val date = R.string.sort_group_title_date
-        val alphabet = R.string.sorting_title_create_time
+        val alphabet = R.string.sort_group_title_title
     }
 
     object Group {
