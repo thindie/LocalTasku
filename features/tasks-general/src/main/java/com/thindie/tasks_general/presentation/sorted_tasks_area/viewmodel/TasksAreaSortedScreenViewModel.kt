@@ -32,9 +32,6 @@ internal class TasksAreaSortedScreenViewModel @Inject constructor(
     override val state: StateFlow<TasksAreaSortedScreenViewModelState> = _state
         .subscribeControlledStateFlow(viewModelScope)
 
-    fun onLaunchScreen() {
-        getContacts()
-    }
 
     override fun onError() {
         _state.error()
@@ -63,6 +60,10 @@ internal class TasksAreaSortedScreenViewModel @Inject constructor(
                 _state.getAndUpdate { tasksGeneralViewModelState ->
                     tasksGeneralViewModelState // todo(
                 }
+            }
+
+            TasksAreaSortedScreenViewModelEvent.OnStartDefault -> {
+                getContacts()
             }
         }
     }

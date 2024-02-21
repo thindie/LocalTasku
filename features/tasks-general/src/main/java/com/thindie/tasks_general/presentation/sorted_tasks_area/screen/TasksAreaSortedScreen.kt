@@ -1,7 +1,9 @@
 package com.thindie.tasks_general.presentation.sorted_tasks_area.screen
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -12,9 +14,10 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.thindie.common.timemanagement.TimeOperator
+import com.thindie.design_system.TaskuDimensions
 import com.thindie.design_system.elements.TaskuAreaStickyHeader
 import com.thindie.design_system.elements.TaskuItem
-import com.thindie.design_system.elements.dim_wrapper.itemsMap
+import com.thindie.design_system.itemsMap
 import com.thindie.tasks_general.presentation.sorted_tasks_area.viewmodel.TasksAreaSortedScreenViewModel
 import com.thindie.tasks_general.presentation.sorted_tasks_area.viewmodelevent.TasksAreaSortedScreenViewModelEvent
 
@@ -25,7 +28,7 @@ internal fun TasksAreaSortedScreen(
     viewModel: TasksAreaSortedScreenViewModel,
 
     ) {
-    LaunchedEffect(key1 = Unit, block = { viewModel.onLaunchScreen() })
+
 
     val viewState by viewModel
         .state
@@ -42,9 +45,10 @@ internal fun TasksAreaSortedScreen(
             viewState.presentableTasks, headerContent = {
                 TaskuAreaStickyHeader(title = it)
             }) {
-
+            Spacer(modifier = Modifier.height(TaskuDimensions.Padding.vertical))
             it.forEachIndexed() { i, item ->
                 TaskuItem(
+                    modifier = Modifier.padding(TaskuDimensions.Padding.horizontal),
                     expandable = item,
                     index = i,
                     item = item,
@@ -53,7 +57,9 @@ internal fun TasksAreaSortedScreen(
                             TasksAreaSortedScreenViewModelEvent.OnTaskUpdate(it)
                         )
                     })
+                Spacer(modifier = Modifier.height(TaskuDimensions.Padding.vertical))
             }
+            Spacer(modifier = Modifier.height(30.dp))
         }
     }
 }

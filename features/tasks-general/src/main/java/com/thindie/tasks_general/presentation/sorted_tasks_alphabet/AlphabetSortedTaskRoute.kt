@@ -1,4 +1,4 @@
-package com.thindie.tasks_general.presentation.unsorted_tasks
+package com.thindie.tasks_general.presentation.sorted_tasks_alphabet
 
 import androidx.compose.runtime.LaunchedEffect
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -10,9 +10,8 @@ import com.thindie.tasks_general.presentation.unsorted_tasks.screen.TasksGeneral
 import com.thindie.tasks_general.presentation.unsorted_tasks.viewmodel.TasksGeneralScreenViewModel
 import com.thindie.tasks_general.presentation.unsorted_tasks.viewmodelevent.TasksGeneralViewModelEvent
 
-
-fun NavGraphBuilder.unsortedTasks() {
-    composable(route = FeatureDestination.routeUnSortTasks) {
+fun NavGraphBuilder.sortedTasksAlphabet() {
+    composable(route = FeatureDestination.alphabetSortedTasks) {
         val factory = FeatureDestinationComponentInit()?.provideFactory()
         val timeOperator = FeatureDestinationComponentInit()?.provideTimeOperator()
         if (factory != null && timeOperator != null) {
@@ -20,7 +19,7 @@ fun NavGraphBuilder.unsortedTasks() {
 
             LaunchedEffect(
                 key1 = Unit,
-                block = { viewModel.onEvent(TasksGeneralViewModelEvent.OnStartDefault) })
+                block = { viewModel.onEvent(TasksGeneralViewModelEvent.OnSortAlphabet) })
 
             TasksGeneralScreen(
                 viewModel = viewModel,

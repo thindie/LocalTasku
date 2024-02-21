@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Divider
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.runtime.Composable
@@ -31,7 +32,9 @@ import com.thindie.tasks_general.presentation.sort_and_group_state.SortAndGroupV
 import com.thindie.tasks_general.presentation.sort_and_group_state.SortAndGroupViewModelEvent
 import com.thindie.tasks_general.presentation.sort_and_group_state.mapper.getGroupApplyable
 import com.thindie.tasks_general.presentation.sort_and_group_state.mapper.getSortApplyable
+import com.thindie.tasks_general.presentation.sorted_tasks_alphabet.sortedTasksAlphabet
 import com.thindie.tasks_general.presentation.sorted_tasks_area.sortedTasksArea
+import com.thindie.tasks_general.presentation.sorted_tasks_date.sortedTasksDate
 import com.thindie.tasks_general.presentation.sorted_tasks_priority.sortedTasksPriority
 import com.thindie.tasks_general.presentation.unsorted_tasks.unsortedTasks
 
@@ -58,7 +61,9 @@ fun NavGraphBuilder.tasksScreenRoute() {
         )
 
 
-        Column(modifier = modifier.fillMaxSize()) {
+        Column(modifier = modifier
+            .padding(TaskuDimensions.Padding.commonValues)
+            .fillMaxSize()) {
             TaskuSortAndGroupRow(
                 onEvent = { event ->
                     event.passToEventOperator(sortAndGroupViewModel::onEvent)
@@ -67,7 +72,9 @@ fun NavGraphBuilder.tasksScreenRoute() {
                 groupApplyable = sortAndGroupState.getGroupApplyable(),
             )
             SectionsDivider(modifier = modifier)
-            NavHost(modifier = modifier.zIndex(1f),
+            NavHost(modifier = modifier
+
+                .zIndex(1f),
                 navController = internalNavController,
                 startDestination = FeatureDestination.routeUnSortTasks,
                 enterTransition = {
@@ -81,6 +88,8 @@ fun NavGraphBuilder.tasksScreenRoute() {
                 sortedTasksArea()
                 sortedTasksPriority()
                 unsortedTasks()
+                sortedTasksDate()
+                sortedTasksAlphabet()
             }
         }
     }
@@ -101,8 +110,8 @@ private fun SortGroup.passToEventOperator(foo: (SortAndGroupViewModelEvent) -> U
     when (this) {
         SortGroup.AREA -> foo.invoke(SortAndGroupViewModelEvent.OnClickArea)
         SortGroup.PRIORITY -> foo.invoke(SortAndGroupViewModelEvent.OnClickPriority)
-        SortGroup.DATE -> TODO()
-        SortGroup.ALPHABET -> TODO()
+        SortGroup.DATE -> foo.invoke(SortAndGroupViewModelEvent.OnClickDate)
+        SortGroup.ALPHABET -> foo.invoke(SortAndGroupViewModelEvent.OnClickAlphabet)
         SortGroup.RESET -> foo.invoke(SortAndGroupViewModelEvent.Root)
         SortGroup.EXPAND_SORT -> foo.invoke(SortAndGroupViewModelEvent.ExpandSort)
         SortGroup.UNEXPAND_SORT -> foo.invoke(SortAndGroupViewModelEvent.UnExpandSort)

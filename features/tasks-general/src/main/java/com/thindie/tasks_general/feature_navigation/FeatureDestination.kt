@@ -4,4 +4,6 @@ internal object FeatureDestination {
     const val routeAreaSortedTasks = "routeAreaSortedTask"
     const val routeUnSortTasks = "routeUnSortTasks"
     const val routePrioritySortedTasks = "routePrioritySortedTask"
+    const val dateSortedTasks = "dateSortedTasks"
+    const val alphabetSortedTasks = "alphabetSortedTasks"
 }

@@ -9,7 +9,9 @@ import com.thindie.design_system.TaskuIcons
 import com.thindie.design_system.TaskuTitles
 import com.thindie.design_system.theme.TaskuColors
 import com.thindie.tasks_general.feature_navigation.FeatureDestination
+import com.thindie.tasks_general.feature_navigation.alphabetSortedTasks
 import com.thindie.tasks_general.feature_navigation.areaSortedTasks
+import com.thindie.tasks_general.feature_navigation.dateSortedTasks
 import com.thindie.tasks_general.feature_navigation.prioritySortedTasks
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -32,10 +34,24 @@ internal class SortAndGroupViewModel private constructor(private val navControll
 
         when (event) {
             //ALPHABET SORT
-            SortAndGroupViewModelEvent.OnClickAlphabet -> TODO()
+            SortAndGroupViewModelEvent.OnClickAlphabet -> {
+                onEvent(SortAndGroupViewModelEvent.Root)
+                _state.update {
+                    it.copy(
+                        rootSortElementColor = TaskuColors.SortAndGroup.active,
+                        sortLabelState = TaskuTitles.Sort.alphabet,
+                        rootSortBackgroundColor = TaskuColors.SortAndGroup.rootBackgroundPassive,
+                        sortDrawable = TaskuIcons.SortGroup.cancel
+
+                    )
+                }
+                if (shouldNavigate) navController.alphabetSortedTasks()
+                onEvent(SortAndGroupViewModelEvent.UnExpandGroup)
+            }
 
             //AREA GROUP
             SortAndGroupViewModelEvent.OnClickArea -> {
+                onEvent(SortAndGroupViewModelEvent.Root)
                 _state.update {
                     it.copy(
                         rootGroupElementColor = TaskuColors.SortAndGroup.active,
@@ -49,10 +65,24 @@ internal class SortAndGroupViewModel private constructor(private val navControll
                 onEvent(SortAndGroupViewModelEvent.UnExpandGroup)
             }
             //DATE SORT
-            SortAndGroupViewModelEvent.OnClickDate -> TODO()
+            SortAndGroupViewModelEvent.OnClickDate -> {
+                onEvent(SortAndGroupViewModelEvent.Root)
+                _state.update {
+                    it.copy(
+                        rootSortElementColor = TaskuColors.SortAndGroup.active,
+                        sortLabelState = TaskuTitles.Sort.date,
+                        rootSortBackgroundColor = TaskuColors.SortAndGroup.rootBackgroundPassive,
+                        sortDrawable = TaskuIcons.SortGroup.cancel
+
+                    )
+                }
+                if (shouldNavigate) navController.dateSortedTasks()
+                onEvent(SortAndGroupViewModelEvent.UnExpandGroup)
+            }
 
             //PRIORITY GROUP
             SortAndGroupViewModelEvent.OnClickPriority -> {
+                onEvent(SortAndGroupViewModelEvent.Root)
                 _state.update {
                     it.copy(
                         rootGroupElementColor = TaskuColors.SortAndGroup.active,
@@ -80,6 +110,14 @@ internal class SortAndGroupViewModel private constructor(private val navControll
                     FeatureDestination.routeAreaSortedTasks -> onEvent(
                         SortAndGroupViewModelEvent.OnClickArea, shouldNavigate = false
                     )
+
+                    FeatureDestination.dateSortedTasks -> {
+                        onEvent(SortAndGroupViewModelEvent.OnClickDate, shouldNavigate = false)
+                    }
+
+                    FeatureDestination.alphabetSortedTasks -> {
+                        onEvent(SortAndGroupViewModelEvent.OnClickAlphabet, shouldNavigate = false)
+                    }
                 }
             }
 

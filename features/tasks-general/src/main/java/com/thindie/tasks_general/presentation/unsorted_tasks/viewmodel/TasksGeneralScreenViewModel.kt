@@ -33,9 +33,6 @@ internal class TasksGeneralScreenViewModel @Inject constructor(
     override val state: StateFlow<TasksGeneralViewModelState> = _state
         .subscribeControlledStateFlow(viewModelScope)
 
-    fun onLaunchScreen() {
-        getContacts()
-    }
 
     override fun onError() {
         _state.error()
@@ -63,6 +60,28 @@ internal class TasksGeneralScreenViewModel @Inject constructor(
                 _state.getAndUpdate { tasksGeneralViewModelState ->
                     taskuEventReceiver.onTaskuEvent(event.event, tasksGeneralViewModelState)
                 }
+            }
+
+            TasksGeneralViewModelEvent.OnSortAlphabet -> {
+                onEvent(TasksGeneralViewModelEvent.OnStartDefault)
+                _state.getAndUpdate { tasksGeneralViewModelState ->
+                    val list =
+                        tasksGeneralViewModelState.presentableTasks.sortedBy { it.taskTitle } //todo
+                    tasksGeneralViewModelState.copy(presentableTasks = list)
+                }
+            }
+
+            TasksGeneralViewModelEvent.OnSortDate -> {
+                onEvent(TasksGeneralViewModelEvent.OnStartDefault)
+                _state.getAndUpdate { tasksGeneralViewModelState ->
+                    val list =
+                        tasksGeneralViewModelState.presentableTasks.sortedBy { it.taskDeadline } //todo
+                    tasksGeneralViewModelState.copy(presentableTasks = list)
+                }
+            }
+
+            TasksGeneralViewModelEvent.OnStartDefault -> {
+                getContacts()
             }
         }
     }

@@ -5,4 +5,6 @@ import com.thindie.design_system.elements.tasku_item_utils.TaskuItemEvent
 
 sealed interface TasksPrioritySortedScreenViewModelEvent {
     data class OnTaskUpdate(val event: TaskuItemEvent) : TasksPrioritySortedScreenViewModelEvent
+
+    data object OnStartDefault: TasksPrioritySortedScreenViewModelEvent
 }
