@@ -4,4 +4,11 @@ import com.thindie.design_system.elements.tasku_item_utils.TaskuItemEvent
 
 sealed interface TasksGeneralViewModelEvent {
     data class OnTaskUpdate(val event: TaskuItemEvent) : TasksGeneralViewModelEvent
+    data object OnSortDate: TasksGeneralViewModelEvent
+
+    data object OnSortAlphabet: TasksGeneralViewModelEvent
+
+    data object OnStartDefault: TasksGeneralViewModelEvent
+
+    data object OnCreateTask: TasksGeneralViewModelEvent
 }

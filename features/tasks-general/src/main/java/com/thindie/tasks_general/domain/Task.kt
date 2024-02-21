@@ -5,6 +5,7 @@ import com.thindie.domain.entities.behavior.Descriptionable
 import com.thindie.domain.entities.behavior.Groupable
 import com.thindie.domain.entities.behavior.Nameable
 import com.thindie.domain.entities.behavior.Planable
+import com.thindie.domain.entities.behavior.Priorable
 import com.thindie.domain.entities.behavior.Uniqable
 
 data class Task(
@@ -14,7 +15,8 @@ data class Task(
     val taskDeadline: Long,
     val taskGroupTitle: String,
     val taskStatusAssign: Int,
-) : Nameable, Descriptionable, Planable, Uniqable, Groupable, Assignable {
+    val taskPriority: Int,
+) : Nameable, Descriptionable, Planable, Uniqable, Groupable, Assignable, Priorable {
     override fun getDescription() = taskDescription
 
     override fun getGrouping() = taskGroupTitle
@@ -27,4 +29,11 @@ data class Task(
 
     override fun getId() = taskId
     override fun getAssign() = taskStatusAssign
+    override fun getPrior() = taskPriority
+
+    companion object {
+        interface CreateAble : Nameable, Descriptionable
+
+    }
+
 }

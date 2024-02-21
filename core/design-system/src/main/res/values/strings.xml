@@ -38,6 +38,7 @@
     <string name="sort_group_title_date">Date</string>
     <string name="sort_group_title_priority">Priority</string>
     <string name="sort_group_title_area">Area</string>
+    <string name="sort_group_title_title">Title</string>
     <string name="sorting_title_none">Sort</string>
     <string name="calendar_title_when">When?</string>
     <string name="calendar_text_when">Tomorrow</string>
@@ -63,4 +64,9 @@
     <string name="expanded_task_bottom_menu_duplicate_title">Duplicate</string>
     <string name="expanded_task_bottom_menu_share_title">Share</string>
     <string name="expanded_task_bottom_menu_delete_title">Delete</string>
+
+    <string name="priority_low">Low Priority</string>
+    <string name="priority_medium">Medium Priority</string>
+    <string name="priority_high">High Priority</string>
+    <string name="priority_highest">Highest Priority</string>
 </resources>

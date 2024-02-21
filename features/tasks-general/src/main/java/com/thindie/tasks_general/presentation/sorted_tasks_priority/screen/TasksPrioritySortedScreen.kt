@@ -1,4 +1,4 @@
-package com.thindie.tasks_general.presentation.sorted_tasks_area.screen
+package com.thindie.tasks_general.presentation.sorted_tasks_priority.screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Spacer
@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -15,17 +14,17 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.thindie.common.timemanagement.TimeOperator
 import com.thindie.design_system.TaskuDimensions
-import com.thindie.design_system.elements.TaskuAreaStickyHeader
 import com.thindie.design_system.elements.TaskuItem
+import com.thindie.design_system.elements.TaskuPriorityStickyHeader
 import com.thindie.design_system.itemsMap
-import com.thindie.tasks_general.presentation.sorted_tasks_area.viewmodel.TasksAreaSortedScreenViewModel
-import com.thindie.tasks_general.presentation.sorted_tasks_area.viewmodelevent.TasksAreaSortedScreenViewModelEvent
+import com.thindie.tasks_general.presentation.sorted_tasks_priority.viewmodel.TasksPrioritySortedScreenViewModel
+import com.thindie.tasks_general.presentation.sorted_tasks_priority.viewmodelevent.TasksPrioritySortedScreenViewModelEvent
 
 
 @Composable
-internal fun TasksAreaSortedScreen(
+internal fun TasksPrioritySortedScreen(
     timeOperator: TimeOperator,
-    viewModel: TasksAreaSortedScreenViewModel,
+    viewModel: TasksPrioritySortedScreenViewModel,
 
     ) {
 
@@ -43,10 +42,11 @@ internal fun TasksAreaSortedScreen(
     ) {
         itemsMap(
             viewState.presentableTasks, headerContent = {
-                TaskuAreaStickyHeader(title = it)
+                TaskuPriorityStickyHeader(it)
             }) {
             Spacer(modifier = Modifier.height(TaskuDimensions.Padding.vertical))
             it.forEachIndexed() { i, item ->
+                Spacer(modifier = Modifier.height(TaskuDimensions.Padding.vertical))
                 TaskuItem(
                     modifier = Modifier.padding(TaskuDimensions.Padding.horizontal),
                     expandable = item,
@@ -54,10 +54,9 @@ internal fun TasksAreaSortedScreen(
                     item = item,
                     onEvent = {
                         viewModel.onEvent(
-                            TasksAreaSortedScreenViewModelEvent.OnTaskUpdate(it)
+                            TasksPrioritySortedScreenViewModelEvent.OnTaskUpdate(it)
                         )
                     })
-                Spacer(modifier = Modifier.height(TaskuDimensions.Padding.vertical))
             }
             Spacer(modifier = Modifier.height(30.dp))
         }
