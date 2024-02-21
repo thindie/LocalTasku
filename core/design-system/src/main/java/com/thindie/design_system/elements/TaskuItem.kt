@@ -15,10 +15,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import com.thindie.design_system.Expandable
 import com.thindie.design_system.Presentable
 import com.thindie.design_system.TaskuDimensions
-import com.thindie.design_system.elements.generic_content.TaskuGenericIconContent
 import com.thindie.design_system.elements.generic_content.TaskuGenericImageContent
 import com.thindie.design_system.elements.generic_content.TaskuGenericInputField
 import com.thindie.design_system.elements.tasku_item_utils.TaskuItemEvent
@@ -34,9 +35,9 @@ fun TaskuItem(
 ) {
     val itemHeight by animateDpAsState(
         targetValue = if (expandable.isExpanded()) {
-            TaskuDimensions.expandedTaskuHeight
+            TaskuDimensions.TaskuCard.taskuHeightExpanded
         } else {
-            TaskuDimensions.basicTaskuHeight
+            TaskuDimensions.TaskuCard.taskuHeight
         }, animationSpec = tween(easing = FastOutSlowInEasing), label = ""
     )
     Surface(
@@ -104,7 +105,11 @@ private fun TitleSection(
     if (isExpanded) {
         TaskuGenericInputField(
             autoRequestFocus = true,
-            textStyle = MaterialTheme.typography.bodyMedium,
+            textStyle = MaterialTheme.typography.bodyMedium.copy(
+                color = MaterialTheme.colorScheme.onBackground,
+                fontStyle = FontStyle.Italic,
+                fontWeight = FontWeight.W400
+            ),
             onFieldValueChange = onEvent,
             fieldValue = item.presentTitle()
         )
@@ -120,7 +125,11 @@ private fun DescriptionSection(item: Presentable, onEvent: (String) -> Unit) {
 
     TaskuGenericInputField(
         autoRequestFocus = false,
-        textStyle = MaterialTheme.typography.bodyMedium,
+        textStyle = MaterialTheme.typography.bodyMedium.copy(
+            color = MaterialTheme.colorScheme.onBackground,
+            fontStyle = FontStyle.Italic,
+            fontWeight = FontWeight.W400
+        ),
         onFieldValueChange = onEvent,
         fieldValue = item.presentDescription()
     )
