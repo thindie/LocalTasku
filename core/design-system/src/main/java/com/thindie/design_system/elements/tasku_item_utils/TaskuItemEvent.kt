@@ -9,4 +9,6 @@ sealed class TaskuItemEvent {
 
     data class OnChangeDescription(val description: String, val index: Int): TaskuItemEvent()
 
+    data class OnChangeCredits(val credits: String, val index: Int): TaskuItemEvent()
+
 }
