@@ -17,7 +17,7 @@ fun BoxScope.TaskuFab(onClick: () -> Unit = {}) {
         onClick = onClick,
         modifier = Modifier
             .padding(TaskuDimensions.Padding.commonValues)
-            .align(Alignment.BottomStart)
+            .align(Alignment.BottomEnd)
     ) {
         Icon(painter = TaskuIcons.flame.painter(), contentDescription = null)
     }
