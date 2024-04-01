@@ -26,4 +26,10 @@ object TaskuTitles {
         val highest = R.string.priority_highest
 
     }
+
+    object TaskuCard {
+        val blankCost = R.string.tasku_card_enter_cost
+        val blackDesc = R.string.tasku_card_enter_description
+        val blankTitle = R.string.tasku_card_enter_title
+    }
 }
