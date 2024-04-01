@@ -3,7 +3,9 @@ package com.thindie.design_system.elements
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -20,9 +22,11 @@ import androidx.compose.ui.text.font.FontWeight
 import com.thindie.design_system.Expandable
 import com.thindie.design_system.Presentable
 import com.thindie.design_system.TaskuDimensions
+import com.thindie.design_system.TaskuTitles
 import com.thindie.design_system.elements.generic_content.TaskuGenericImageContent
 import com.thindie.design_system.elements.generic_content.TaskuGenericInputField
 import com.thindie.design_system.elements.tasku_item_utils.TaskuItemEvent
+import com.thindie.design_system.string
 
 
 @Composable
@@ -41,11 +45,9 @@ fun TaskuItem(
         }, animationSpec = tween(easing = FastOutSlowInEasing), label = ""
     )
     Surface(
-        shape = MaterialTheme.shapes.extraLarge,
-        onClick = {
+        shape = MaterialTheme.shapes.extraLarge, onClick = {
             onEvent(TaskuItemEvent.OnClick(index))
-        },
-        modifier = modifier
+        }, modifier = modifier
             .fillMaxWidth()
             .height(itemHeight)
     ) {
@@ -79,6 +81,9 @@ private fun ExpandedItem(item: Presentable, index: Int, onEvent: (TaskuItemEvent
                 TaskuItemEvent.OnChangeDescription(it, index)
             )
         })
+        CostDisplayingExpanded(item = item, onEvent = {
+            onEvent(TaskuItemEvent.OnChangeCredits(it, index))
+        })
         CustomizingSection(isExpanded = true, item = item, onEvent) // todo(
     }
 }
@@ -90,9 +95,42 @@ private fun UsualItem(item: Presentable, index: Int, onEvent: (TaskuItemEvent) -
             .fillMaxWidth()
             .wrapContentHeight()
     ) {
-        TitleSection(isExpanded = false, item = item, onEvent = { /*ignore*/ })
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            TitleSection(isExpanded = false, item = item, onEvent = { /*ignore*/ })
+            CostDisplayingUnexpanded(item = item)
+        }
+
         CustomizingSection(isExpanded = false, item = item, onEvent)
     }
+}
+
+@Composable
+private fun CostDisplayingUnexpanded(item: Presentable) {
+    if (item.presentCredits().isNotBlank())
+        Text(
+            text = item.presentCredits(),
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onBackground
+        )
+}
+
+@Composable
+private fun CostDisplayingExpanded(item: Presentable, onEvent: (String) -> Unit) {
+    TaskuGenericInputField(
+        autoRequestFocus = true,
+        textStyle = MaterialTheme.typography.bodyMedium.copy(
+            color = MaterialTheme.colorScheme.onBackground,
+            fontStyle = FontStyle.Italic,
+            fontWeight = FontWeight.W400
+        ),
+        onFieldValueChange = onEvent,
+        fieldValue = item.presentCredits(),
+        placeHolderString =  TaskuTitles.TaskuCard.blankCost.string()
+    )
 }
 
 @Composable
@@ -104,14 +142,12 @@ private fun TitleSection(
 
     if (isExpanded) {
         TaskuGenericInputField(
-            autoRequestFocus = true,
-            textStyle = MaterialTheme.typography.bodyMedium.copy(
+            autoRequestFocus = true, textStyle = MaterialTheme.typography.bodyMedium.copy(
                 color = MaterialTheme.colorScheme.onBackground,
                 fontStyle = FontStyle.Italic,
                 fontWeight = FontWeight.W400
-            ),
-            onFieldValueChange = onEvent,
-            fieldValue = item.presentTitle()
+            ), onFieldValueChange = onEvent, fieldValue = item.presentTitle(),
+            placeHolderString =  TaskuTitles.TaskuCard.blankTitle.string()
         )
     } else {
         Text(
@@ -124,14 +160,13 @@ private fun TitleSection(
 private fun DescriptionSection(item: Presentable, onEvent: (String) -> Unit) {
 
     TaskuGenericInputField(
-        autoRequestFocus = false,
-        textStyle = MaterialTheme.typography.bodyMedium.copy(
+        autoRequestFocus = false, textStyle = MaterialTheme.typography.bodyMedium.copy(
             color = MaterialTheme.colorScheme.onBackground,
             fontStyle = FontStyle.Italic,
             fontWeight = FontWeight.W400
-        ),
-        onFieldValueChange = onEvent,
-        fieldValue = item.presentDescription()
+        ), onFieldValueChange = onEvent,
+        fieldValue = item.presentDescription(),
+        placeHolderString = TaskuTitles.TaskuCard.blackDesc.string()
     )
 }
 
