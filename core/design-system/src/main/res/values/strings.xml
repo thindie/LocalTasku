@@ -34,6 +34,11 @@
     <string name="text_today">Today</string>
     <string name="text_tomorrow">Tomorrow</string>
     <string name="text_unspecified"> </string>
+
+    <string name="tasku_card_enter_cost"> ..cost </string>
+    <string name="tasku_card_enter_title"> ..Title </string>
+    <string name="tasku_card_enter_description"> ..description </string>
+
     <string name="grouping_title_none">Group</string>
     <string name="sort_group_title_date">Date</string>
     <string name="sort_group_title_priority">Priority</string>
