@@ -8,8 +8,8 @@ internal class SetCreateAbleUseCase @Inject constructor(private val repository: 
     suspend fun set(): Result<Unit> {
         return repository.setCreateable(object : Task.Companion.CreateAble {
             override fun getName() = ""
-
             override fun getDescription() = getName()
+            override fun getTrackPoint() = System.currentTimeMillis()
         })
     }
 }

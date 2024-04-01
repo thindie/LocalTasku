@@ -72,6 +72,18 @@ internal class ViewModelStateTaskuListUpdateAssistant @Inject constructor() {
                     expandedIndex = -1
                 )
             }
+
+            is TaskuItemEvent.OnChangeCredits -> {
+                viewModelState.copy(
+                    presentableTasks = viewModelState.presentableTasks.mapIndexed { index, presentableTask ->
+                        if (taskuCardEvent.index == index) {
+                            presentableTask.copy(taskCredits = taskuCardEvent.credits.toIntOrNull())
+                        } else {
+                            presentableTask
+                        }
+                    }
+                )
+            }
         }
     }
 }

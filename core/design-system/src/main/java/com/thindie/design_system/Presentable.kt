@@ -7,6 +7,8 @@ interface Presentable {
     fun presentTitle(): String
     fun presentDescription(): String
 
+    fun presentCredits(): String
+
     @Composable
     fun presentPicture(): Painter
 }

@@ -10,6 +10,7 @@ import com.thindie.domain.entities.behavior.Descriptionable
 import com.thindie.domain.entities.behavior.Groupable
 import com.thindie.domain.entities.behavior.Nameable
 import com.thindie.domain.entities.behavior.Planable
+import com.thindie.domain.entities.behavior.Spendable
 import com.thindie.domain.entities.behavior.Uniqable
 
 internal data class PresentableTask(
@@ -21,10 +22,16 @@ internal data class PresentableTask(
     val taskStatusType: TaskStatusType,
     val taskPriorityType: TaskPriorityType,
     val isTaskExpanded: Boolean,
-) : Presentable, Nameable, Descriptionable, Uniqable, Planable, Groupable, Expandable {
+    val taskCredits: Int? = null,
+) : Presentable, Nameable, Descriptionable, Uniqable, Planable, Groupable, Expandable, Spendable {
     override fun presentTitle() = taskTitle
 
     override fun presentDescription() = taskDescription
+    override fun presentCredits(): String {
+        return getCost()?.let {
+            it.toString()
+        }.orEmpty()
+    }
 
     @Composable
     override fun presentPicture(): Painter {
@@ -43,4 +50,5 @@ internal data class PresentableTask(
 
     override fun getId() = taskId
     override fun isExpanded() = isTaskExpanded
+    override fun getCost() = taskCredits
 }
