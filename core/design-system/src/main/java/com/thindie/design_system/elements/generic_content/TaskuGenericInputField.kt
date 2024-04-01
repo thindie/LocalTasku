@@ -3,6 +3,7 @@ package com.thindie.design_system.elements.generic_content
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -13,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.input.KeyboardType
 import kotlinx.coroutines.delay
 
@@ -24,7 +26,7 @@ fun TaskuGenericInputField(
     fieldValue: String,
     keyboardType: KeyboardType = KeyboardType.Text,
     onFieldValueChange: (String) -> Unit,
-    decorationBox: @Composable (innerTextField: @Composable () -> Unit) -> Unit = @Composable { innerTextField -> innerTextField() },
+    placeHolderString: String,
 ) {
     val focusRequester = remember {
         FocusRequester()
@@ -54,7 +56,16 @@ fun TaskuGenericInputField(
             .then(focusedModifier),
         textStyle = textStyle,
         singleLine = true,
-        decorationBox = decorationBox
+        decorationBox = { decorationBox ->
+            fieldValue.ifBlank {
+                Text(
+                    text = placeHolderString,
+                    style = textStyle.copy(fontStyle = FontStyle.Italic)
+                )
+            }
+
+            decorationBox()
+        }
     )
 
 }
