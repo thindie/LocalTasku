@@ -19,6 +19,7 @@
             <option value="$PROJECT_DIR$/core/design-system" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/tasks-costs" />
             <option value="$PROJECT_DIR$/features/tasks-general" />
           </set>
         </option>

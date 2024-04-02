@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.thindie.tasks_general"
+    namespace = "com.thindie.tasks_costs"
     compileSdk = Config.compileSdk
 
     defaultConfig {
