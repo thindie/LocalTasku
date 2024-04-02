@@ -9,5 +9,5 @@ internal interface TasksCostRepository {
     suspend fun requestCostsSumWeek()
     suspend fun requestCostsSumDay()
 
-    fun observeCostsSummary(): Flow<CostsList>
+    fun observeCostsSummary(): Flow<PeriodGroupedCostsProvider>
 }
