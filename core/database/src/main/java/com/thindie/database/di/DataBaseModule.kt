@@ -8,7 +8,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-object DataBaseModule {
+internal object DataBaseModule {
     private const val DB_NAME = "notes"
 
     @Provides

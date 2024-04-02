@@ -9,6 +9,6 @@ import javax.inject.Singleton
 
 @Singleton
 //@Database(entities =  [], version = 1, exportSchema = false)
-abstract class NotesAppDataBase : RoomDatabase() {
+internal abstract class NotesAppDataBase : RoomDatabase() {
 
 }
