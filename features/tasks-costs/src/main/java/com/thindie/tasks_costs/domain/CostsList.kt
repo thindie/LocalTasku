@@ -4,8 +4,8 @@ import com.thindie.domain.entities.behavior.Spendable
 
 internal data class CostsList(
     val costs: Int,
-    val costsPeriod: TotalCosts,
-    val topCosts: List<Cost>,
+    val costsPeriod: CostsGrouping,
+    val periodCostsScope: List<Cost>,
 ) : Spendable {
 
     override fun getCost() = costs

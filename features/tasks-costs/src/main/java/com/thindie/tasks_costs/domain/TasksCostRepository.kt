@@ -1,8 +1,13 @@
 package com.thindie.tasks_costs.domain
 
+import kotlinx.coroutines.flow.Flow
+
+
 internal interface TasksCostRepository {
-    suspend fun getCostsSumMonth(): CostsList
-    suspend fun getCostsSumYear(): CostsList
-    suspend fun getCostsSumWeek(): CostsList
-    suspend fun getCostsSumDay(): CostsList
+    suspend fun requestCostsSumMonth()
+    suspend fun requestCostsSumYear()
+    suspend fun requestCostsSumWeek()
+    suspend fun requestCostsSumDay()
+
+    fun observeCostsSummary(): Flow<CostsList>
 }
