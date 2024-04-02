@@ -7,7 +7,7 @@ import dagger.Component
 @TasksCostsScope
 @Component(
     dependencies = [DependenciesProvider::class],
-    modules = [ViewModelModule::class, ViewModelFactoryModule::class]
+    modules = [ViewModelModule::class, ViewModelFactoryModule::class, TaskRepositoryModule::class]
 )
 interface TasksCostsComponent {
     companion object {
