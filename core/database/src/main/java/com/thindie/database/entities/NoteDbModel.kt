@@ -7,8 +7,8 @@ import com.thindie.database.DataBaseContract.notesTable
 
 @Entity(tableName = notesTable)
 internal data class NoteDbModel(
-    @PrimaryKey (autoGenerate = false)
-    val noteId: Long,
+    @PrimaryKey (autoGenerate = true)
+    val noteId: Long = 0,
     val noteTitle: String,
     val noteDescription: String,
     val noteDeadline: Long,
@@ -35,4 +35,18 @@ internal data class NoteDbModel(
     override fun getCost() = noteCost
 
     override fun getTrackPoint() = noteCreationTime
+
+    companion object {
+        fun getInstance() = NoteDbModel (
+            noteId = 0,
+            noteTitle = "",
+            noteDescription = "",
+            noteDeadline = 0,
+            noteGroupTitle = "",
+            noteStatusAssign = 0,
+            notePriority = 0,
+            noteCost = null,
+            noteCreationTime = System.currentTimeMillis()
+        )
+    }
 }

@@ -8,5 +8,6 @@ interface LocalSource {
     suspend fun update(localSourceEntity: LocalSourceEntity)
     suspend fun delete(uniqable: Uniqable)
 
+    suspend fun create()
     fun observeLocalStoredEntities(): Flow<List<LocalSourceEntity>>
 }
