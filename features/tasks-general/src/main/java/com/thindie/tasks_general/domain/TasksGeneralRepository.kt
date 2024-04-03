@@ -1,6 +1,10 @@
 package com.thindie.tasks_general.domain
 
+import kotlinx.coroutines.flow.Flow
+
 internal interface TasksGeneralRepository {
-    suspend fun getTasks(): Result<List<Task>>
-    suspend fun setCreateable(createAble: Task.Companion.CreateAble): Result<Unit>
+    fun observeTasks(): Flow<Result<List<Task>>>
+    suspend fun initTask()
+
+    suspend fun updateTask(task: Task)
 }
