@@ -5,7 +5,7 @@ import com.thindie.common.CommonProvider
 import com.thindie.common.DependenciesProvider
 import com.thindie.common.di.CommonsComponent
 import com.thindie.database.di.LocalSourceComponent
-import com.thindie.database.di.LocalSourceProvider
+import com.thindie.database.LocalSourceProvider
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton

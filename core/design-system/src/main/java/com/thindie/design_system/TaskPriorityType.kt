@@ -12,6 +12,8 @@ sealed interface TaskPriorityType {
 
     fun getColor(): Color
 
+    fun getPriorityBind(): Int
+
     @StringRes
     fun getTitle(): Int
 
@@ -21,6 +23,8 @@ sealed interface TaskPriorityType {
 
         override fun getColor() = Color.LightGray
         override fun getTitle() = TaskuTitles.Priority.low
+
+        override fun getPriorityBind() = 0
     }
 
     data object Medium : TaskPriorityType {
@@ -29,6 +33,8 @@ sealed interface TaskPriorityType {
         override fun getColor() = TaskuColors.green
 
         override fun getTitle() = TaskuTitles.Priority.medium
+
+        override fun getPriorityBind() = 1
     }
 
     data object High : TaskPriorityType {
@@ -37,6 +43,7 @@ sealed interface TaskPriorityType {
         override fun getColor() = TaskuColors.azure
 
         override fun getTitle() = TaskuTitles.Priority.high
+        override fun getPriorityBind() = 2
 
     }
 
@@ -45,6 +52,7 @@ sealed interface TaskPriorityType {
         override fun getStatusImage() = TaskuIcons.Priority.priorityHigh.painter()
         override fun getColor() = TaskuColors.red
         override fun getTitle() = TaskuTitles.Priority.highest
+        override fun getPriorityBind() = 3
     }
 
     companion object Factory {

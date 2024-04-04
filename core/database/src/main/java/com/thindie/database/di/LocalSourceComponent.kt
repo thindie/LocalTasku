@@ -1,12 +1,13 @@
 package com.thindie.database.di
 
 import android.content.Context
+import com.thindie.database.LocalSourceProvider
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [DaoModule::class, DataBaseModule::class])
+@Component(modules = [DaoModule::class, DataBaseModule::class, LocalSourceModule::class])
 interface LocalSourceComponent: LocalSourceProvider {
     companion object{
         fun init(context: Context): LocalSourceComponent {

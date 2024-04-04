@@ -6,5 +6,5 @@ object Modules {
     val domain = ":domain"
     val designSystem = ":core:design-system"
     val tasksGeneral = ":features:tasks-general"
-
+    val tasksCost = ":features:tasks-costs"
 }

@@ -76,6 +76,6 @@ dependencies {
 
     // Gson
     implementation(Dependencies.Gson.gson)
-
+    implementation(project(Modules.domain))
 
 }

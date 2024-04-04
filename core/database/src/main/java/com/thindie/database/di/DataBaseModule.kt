@@ -2,13 +2,13 @@ package com.thindie.database.di
 
 import android.content.Context
 import androidx.room.Room
-import com.thindie.database.NotesAppDataBase
+import com.thindie.database.entities.NotesAppDataBase
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-object DataBaseModule {
+internal object DataBaseModule {
     private const val DB_NAME = "notes"
 
     @Provides
@@ -17,7 +17,7 @@ object DataBaseModule {
         return Room
             .databaseBuilder(
                 context = context, klass = NotesAppDataBase::class.java, name = DB_NAME
-            ).fallbackToDestructiveMigration()
+            )
             .build()
     }
 }

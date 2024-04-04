@@ -61,7 +61,7 @@ dependencies {
 
     // Dagger
     implementation(Dependencies.Dagger.dagger)
-    implementation(project(mapOf("path" to ":core:design-system")))
+    implementation(project(Modules.designSystem))
 
     kapt(Dependencies.Dagger.annotationProcessorCompiler)
 

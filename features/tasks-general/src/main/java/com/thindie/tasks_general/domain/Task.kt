@@ -40,9 +40,4 @@ data class Task(
 
     override fun getTrackPoint() = taskCreationTime
 
-    companion object {
-
-        interface CreateAble : Nameable, Descriptionable, Trackable
-    }
-
 }
