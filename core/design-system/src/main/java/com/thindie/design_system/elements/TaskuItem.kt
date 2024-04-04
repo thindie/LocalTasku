@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import com.thindie.design_system.Expandable
 import com.thindie.design_system.Presentable
 import com.thindie.design_system.TaskuDimensions
@@ -122,6 +123,7 @@ private fun CostDisplayingUnexpanded(item: Presentable) {
 private fun CostDisplayingExpanded(item: Presentable, onEvent: (String) -> Unit) {
     TaskuGenericInputField(
         autoRequestFocus = true,
+        keyboardType = KeyboardType.Number,
         textStyle = MaterialTheme.typography.bodyMedium.copy(
             color = MaterialTheme.colorScheme.onBackground,
             fontStyle = FontStyle.Italic,
