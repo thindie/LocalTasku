@@ -11,6 +11,7 @@ import com.thindie.domain.entities.behavior.Groupable
 import com.thindie.domain.entities.behavior.Nameable
 import com.thindie.domain.entities.behavior.Planable
 import com.thindie.domain.entities.behavior.Spendable
+import com.thindie.domain.entities.behavior.Trackable
 import com.thindie.domain.entities.behavior.Uniqable
 
 internal data class PresentableTask(
@@ -23,7 +24,9 @@ internal data class PresentableTask(
     val taskPriorityType: TaskPriorityType,
     val isTaskExpanded: Boolean,
     val taskCredits: Int? = null,
-) : Presentable, Nameable, Descriptionable, Uniqable, Planable, Groupable, Expandable, Spendable {
+    val creationTime: Long,
+) : Presentable, Nameable, Descriptionable, Uniqable, Planable, Groupable, Expandable, Spendable,
+    Trackable {
     override fun presentTitle() = taskTitle
 
     override fun presentDescription() = taskDescription
@@ -51,4 +54,5 @@ internal data class PresentableTask(
     override fun getId() = taskId
     override fun isExpanded() = isTaskExpanded
     override fun getCost() = taskCredits
+    override fun getTrackPoint() = creationTime
 }

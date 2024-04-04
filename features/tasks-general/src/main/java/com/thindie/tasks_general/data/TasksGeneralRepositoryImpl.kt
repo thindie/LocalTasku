@@ -32,7 +32,8 @@ internal class TasksGeneralRepositoryImpl @Inject constructor(
     }
 
     override suspend fun updateTask(task: Task) {
-        localSource.update(task.map())
+        val savedTask = localSource.get(task)
+        localSource.update(task.copy(taskCreationTime = savedTask.getTrackPoint()).map())
     }
 
 
