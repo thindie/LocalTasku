@@ -18,4 +18,7 @@ internal interface NotesDao {
     @Query("DELETE FROM $notesTable WHERE noteId = :id")
     suspend fun deleteNote(id: Long)
 
+    @Query("SELECT * FROM $notesTable WHERE noteId = :id LIMIT 1")
+    suspend fun getNote(id: Long): NoteDbModel
+
 }

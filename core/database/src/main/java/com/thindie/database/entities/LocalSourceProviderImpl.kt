@@ -18,6 +18,10 @@ internal class LocalSourceProviderImpl @Inject constructor(private val dao: Note
         dao.deleteNote(uniqable.getId())
     }
 
+    override suspend fun get(uniqable: Uniqable): LocalSourceEntity {
+      return dao.getNote(uniqable.getId())
+    }
+
     override suspend fun create() {
         dao.upsertNote(NoteDbModel.getInstance())
     }
