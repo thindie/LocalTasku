@@ -14,7 +14,8 @@ internal fun Task.asPresentableTask() = PresentableTask(
     taskStatusType = TaskStatusType.getInstance(getAssign()),
     isTaskExpanded = false,
     taskPriorityType = TaskPriorityType.getInstance(getPrior()),
-    creationTime = getTrackPoint()
+    creationTime = getTrackPoint(),
+    taskCredits = getCost()
 )
 
 internal fun PresentableTask.asTask() = Task(
